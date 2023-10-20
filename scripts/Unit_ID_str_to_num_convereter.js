@@ -1,4 +1,4 @@
-function convertLettersToNumber(str) {
+function Unit_ID_str_to_num_convereter(str) {
     if (str.length !== 2) {
         return "Входная строка должна состоять из двух букв";
     }
