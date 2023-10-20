@@ -1,3 +1,4 @@
+//преобразует числовой ID юнита в объект для отображения на вебстранице (картинку)
 function UnitID_to_img(number) {    
     let img = document.createElement('img');
     img.src = '../icons_units-color-a-6.png';
