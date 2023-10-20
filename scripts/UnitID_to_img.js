@@ -11,7 +11,7 @@ function getIcon(number) {
     }    
     img.style.width = '23px';
     img.style.height = '23px';
-    img.style.border = '1px solid black';
+    img.style.border = '1px solid transparent';
     img.style.objectFit = 'none';
     img.style.objectPosition = '-' + offset + 'px 0';    
     return img;
