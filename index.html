@@ -30,10 +30,11 @@
                     const row = document.createElement('tr');
                     const dateCell = document.createElement('td');
                     const logCell = document.createElement('td');
-                    const [dateString, ...logParts] = line.split(' ');
+                    const [dateString, timeString, ...logParts] = line.split(' ');
                     const log = logParts.join(' ');
-                    const date = new Date(dateString);
-                    dateCell.textContent = date.toLocaleTimeString();
+                    const [day, month, year] = dateString.split('.');
+                    const date = new Date(year, month - 1, day);
+                    dateCell.textContent = timeString;
                     logCell.textContent = log;
                     row.appendChild(dateCell);
                     row.appendChild(logCell);
