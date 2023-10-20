@@ -1,7 +1,7 @@
 const strtonum = require('./Unit_ID_str_to_num_convereter.js');
 const IDtoimg = require('./UnitID_to_img.js');
 
-function processString(input) {
+function UnitsStringParser(input) {
     // Разбиваем строку на подстроки
     let substrings = input.split('-');
     substrings.pop(); // Удаляем последний элемент, так как он пустой
