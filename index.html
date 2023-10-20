@@ -2,11 +2,15 @@
 <html>
 <head>
     <title>Чтение файла</title>
+    <style>
+        table { border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 5px; }
+    </style>
 </head>
 <body>
     <input type="file" id="fileInput" accept=".log">
     <button onclick="readFile()">Прочитать файл</button>
-    <pre id="fileContent"></pre>
+    <table id="fileContent"></table>
 
     <script>
         function readFile() {
@@ -19,7 +23,22 @@
             const reader = new FileReader();
             reader.onload = function(e) {
                 const content = e.target.result;
-                document.getElementById('fileContent').textContent = content;
+                const lines = content.split('\n').filter(line => !line.includes('Update battle state'));
+                const table = document.getElementById('fileContent');
+                table.innerHTML = '';
+                lines.forEach(line => {
+                    const row = document.createElement('tr');
+                    const dateCell = document.createElement('td');
+                    const logCell = document.createElement('td');
+                    const [dateString, ...logParts] = line.split(' ');
+                    const log = logParts.join(' ');
+                    const date = new Date(dateString);
+                    dateCell.textContent = date.toLocaleTimeString();
+                    logCell.textContent = log;
+                    row.appendChild(dateCell);
+                    row.appendChild(logCell);
+                    table.appendChild(row);
+                });
             };
             reader.readAsText(file);
         }
