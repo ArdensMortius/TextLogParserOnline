@@ -29,15 +29,37 @@
                 lines.forEach(line => {
                     const row = document.createElement('tr');
                     const dateCell = document.createElement('td');
-                    const logCell = document.createElement('td');
-                    const [dateString, timeString, ...logParts] = line.split(' ');
-                    const log = logParts.join(' ');
+                    const numberCell = document.createElement('td');
+                    const side0Cell = document.createElement('td');
+                    const side1Cell = document.createElement('td');
+                    let [dateString, timeString, ...logParts] = line.split(' ');
+                    let log = logParts.join(' ');
                     const [day, month, year] = dateString.split('.');
                     const date = new Date(year, month - 1, day);
                     dateCell.textContent = timeString;
-                    logCell.textContent = log;
+                    
+                    if (log.startsWith('Try reinforce ')) {
+                        const numberMatch = log.match(/Try reinforce (\d+)/);
+                        if (numberMatch) {
+                            numberCell.textContent = numberMatch[1];
+                            log = log.replace(numberMatch[0], '');
+                        }
+                    }
+
+                    if (log.includes('side=0')) {
+                        side0Cell.textContent = log;
+                        log = '';
+                    }
+
+                    if (log.includes('side=1')) {
+                        side1Cell.textContent = log;
+                        log = '';
+                    }
+
                     row.appendChild(dateCell);
-                    row.appendChild(logCell);
+                    row.appendChild(numberCell);
+                    row.appendChild(side0Cell);
+                    row.appendChild(side1Cell);
                     table.appendChild(row);
                 });
             };
