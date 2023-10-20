@@ -48,5 +48,5 @@ function readFile() {
                     table.appendChild(row);
                 });
             };
-            //reader.readAsText(file);
+            reader.readAsText(file);
         }
