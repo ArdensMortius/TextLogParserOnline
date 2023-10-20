@@ -1,4 +1,4 @@
-function getIcon(number) {    
+function UnitID_to_img(number) {    
     let img = document.createElement('img');
     img.src = '../icons_units-color-a-6.png';
     // Размер каждой иконки
