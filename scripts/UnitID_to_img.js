@@ -1,12 +1,12 @@
 function getIcon(number) {    
-    var img = document.createElement('img');
+    let img = document.createElement('img');
     img.src = '../icons_units-color-a-6.png';
-    // Размер каждой иконки (включая рамку)
-    var iconSize = 25;
+    // Размер каждой иконки
+    const iconSize = 23;
     // Вычисляем смещение для данного числа
-    var offset = (number+1) * (iconSize-2);
+    const offset = (number+1) * (iconSize);
     // Если число не соответствует иконке, используем иконку -1
-    if (number < -1 || number >= 2714 / (iconSize-2)) {
+    if (number < -1 || number >= 2714 / (iconSize)) {
         offset = 0;
     }    
     img.style.width = '23px';
